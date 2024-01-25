@@ -36,7 +36,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('https://instacartseasonone.onrender.com/api/agentRoute/',{method:'GET',  headers: {
+            const response = await fetch('https://instacartbackend.onrender.com/api/agentRoute/',{method:'GET',  headers: {
               'token': token
             }},{withCredentials: true
             }  );
@@ -53,7 +53,7 @@ const AdminDashboard = () => {
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('https://instacartseasonone.onrender.com/api/supervisor/', {method:'GET',  headers: {
+            const response = await fetch('https://instacartbackend.onrender.com/api/supervisor/', {method:'GET',  headers: {
               'token': token
             }},{withCredentials: true
             } );
@@ -89,7 +89,7 @@ const AdminDashboard = () => {
 
       async function submitProfile  () {
         try {
-          const response = await axios.post('https://instacartseasonone.onrender.com/api/agentRoute/profile', {agentId, username, password},{ headers: {
+          const response = await axios.post('https://instacartbackend.onrender.com/api/agentRoute/profile', {agentId, username, password},{ headers: {
             'token': token
           }},{withCredentials: true
         });
@@ -216,7 +216,7 @@ const AdminDashboard = () => {
 
        async function submitInterval  (agentId, start, end) {
         try {
-          const response = await axios.post('https://instacartseasonone.onrender.com/api/agentRoute/profile', { agentId, start, end},{  headers: {
+          const response = await axios.post('https://instacartbackend.onrender.com/api/agentRoute/profile', { agentId, start, end},{  headers: {
             'token': token
           }},{withCredentials: true
         });
@@ -247,7 +247,7 @@ const AdminDashboard = () => {
    
         const fetchData = async () => {
           try {
-            const response = await axios.post('https://instacartseasonone.onrender.com/api/agentRoute/',{username, password},{  headers: {
+            const response = await axios.post('https://instacartbackend.onrender.com/api/agentRoute/',{username, password},{  headers: {
               'token': token
             }});
            
@@ -282,7 +282,7 @@ const AdminDashboard = () => {
         const  idInMind = id
         console.log(id)
         try {
-          const response = await axios.post('https://instacartseasonone.onrender.com/api/agentRoute/delete',{id }, {  headers: {
+          const response = await axios.post('https://instacartbackend.onrender.com/api/agentRoute/delete',{id }, {  headers: {
             'token': token
           }},{withCredentials: true
         });
@@ -314,7 +314,7 @@ const AdminDashboard = () => {
       const  idInMind = id
       console.log(id)
       try {
-        const response = await axios.post('https://instacartseasonone.onrender.com/api/supervisor/delete',{id}, {  headers: {
+        const response = await axios.post('https://instacartbackend.onrender.com/api/supervisor/delete',{id}, {  headers: {
           'token': token
         }}, {withCredentials: true
       });
@@ -348,7 +348,7 @@ const AdminDashboard = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.post('https://instacartseasonone.onrender.com/api/supervisor/', {username, password},{ headers: {
+        const response = await axios.post('https://instacartbackend.onrender.com/api/supervisor/', {username, password},{ headers: {
           'token': token
         }},{withCredentials: true
       });
@@ -384,7 +384,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
 
-      const response = await fetch('https://instacartseasonone.onrender.com/api/instacart/',{ method:'GET', headers: {
+      const response = await fetch('https://instacartbackend.onrender.com/api/instacart/',{ method:'GET', headers: {
         'token': token
       }
     },  {credentials:'include'} );
@@ -408,7 +408,7 @@ const [creditAccounts, setCreditAccounts] = useState([])
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await fetch('https://instacartseasonone.onrender.com/api/card/',{method:'GET',  headers: {
+      const response = await fetch('https://instacartbackend.onrender.com/api/card/',{method:'GET',  headers: {
         'token': token
       }
     }, {credentials:'include'} );
@@ -426,7 +426,7 @@ const [loginAccounts, setLoginAccounts] = useState([])
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await fetch('https://instacartseasonone.onrender.com/api/login/',{method:'GET',  headers: {
+      const response = await fetch('https://instacartbackend.onrender.com/api/login/',{method:'GET',  headers: {
         'token': token
       }
     },{credentials:'include'} );
