@@ -1,0 +1,18 @@
+
+h2{
+    font-weight: bolder;
+}
+
+a {
+    text-decoration: none;
+    color: green !important;
+    cursor: pointer;
+
+}
+.line {
+ border-bottom: 1px solid gray;
+
+}
+input {
+    z-index: 1;
+}

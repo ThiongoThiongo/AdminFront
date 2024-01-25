@@ -1,0 +1,12 @@
+.centerAdmin {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.centerForm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
