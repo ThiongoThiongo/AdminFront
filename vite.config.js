@@ -9,7 +9,7 @@ export default defineConfig({
       port:3000,
       proxy:{
         '/api': {
-          target:'https://instacartseasonone.onrender.com',
+          target:'https://instacartbackend.onrender.com',
           changeOrigin:true
         }
     

@@ -358,9 +358,7 @@ const AdminDashboard = () => {
             toast.success('Successfully Registered');
              const supervisorsTemp = [...supervisors];
              supervisorsTemp.push(response.data.supervisor)
-             console.log(supervisorsTemp)
              setSupervisors(supervisorsTemp)
-             console.log(supervisors)
 
          }
          else{
@@ -442,12 +440,29 @@ useEffect(() => {
 }, []); 
 
 const calledCheckedCard = (id, state) => {
+  var instas = [...creditAccounts];
 
-  navigate('/dashboard');
+  console.log(instas)
+  instas.map((insta)=> {
+    if(insta._id === id){
+      return insta.checked = state
+    }
+  })
+  console.log(instas)
+  setCreditAccounts(instas)
+
+
 }
 const calledCheckedLogin= (id, state) => {
   var instas = [...loginAccounts];
-  navigate('/dashboard');
+
+  console.log(instas)
+  instas.map((insta)=> {
+    if(insta._id === id){
+      return insta.checked = state
+    }
+  })
+  console.log(instas)
   setLoginAccounts(instas)
 }
   return (
