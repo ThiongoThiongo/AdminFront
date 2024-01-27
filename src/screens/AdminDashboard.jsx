@@ -36,7 +36,7 @@ const [loading, setLoading] = useState(false)
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('http://localhost:5000/api/agentRoute/',{method:'GET',  headers: {
+            const response = await fetch('https://instacartbackend.onrender.com/api/agentRoute/',{method:'GET',  headers: {
               'token': token
             }},{withCredentials: true
             }  );
@@ -52,7 +52,7 @@ const [loading, setLoading] = useState(false)
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('http://localhost:5000/api/supervisor/', {method:'GET',  headers: {
+            const response = await fetch('https://instacartbackend.onrender.com/api/supervisor/', {method:'GET',  headers: {
               'token': token
             }},{withCredentials: true
             } );
@@ -87,7 +87,7 @@ const [loading, setLoading] = useState(false)
 
       async function submitProfile  () {
         try {
-          const response = await axios.post('http://localhost:5000/api/agentRoute/profile', {agentId, username, password},{ headers: {
+          const response = await axios.post('https://instacartbackend.onrender.com/api/agentRoute/profile', {agentId, username, password},{ headers: {
             'token': token
           }},{withCredentials: true
         });
@@ -214,7 +214,7 @@ const [loading, setLoading] = useState(false)
 
        async function submitInterval  (agentId, start, end) {
         try {
-          const response = await axios.post('http://localhost:5000/api/agentRoute/profile', { agentId, start, end},{  headers: {
+          const response = await axios.post('https://instacartbackend.onrender.com/api/agentRoute/profile', { agentId, start, end},{  headers: {
             'token': token
           }},{withCredentials: true
         });
@@ -246,7 +246,7 @@ const [loading, setLoading] = useState(false)
 
         const fetchData = async () => {
           try {
-            const response = await axios.post('http://localhost:5000/api/agentRoute/',{username, password},{  headers: {
+            const response = await axios.post('https://instacartbackend.onrender.com/api/agentRoute/',{username, password},{  headers: {
               'token': token
             }});
            
@@ -285,7 +285,7 @@ const [loading, setLoading] = useState(false)
         const  idInMind = id
         setLoading(true)
         try {
-          const response = await axios.post('http://localhost:5000/api/agentRoute/delete',{id }, {  headers: {
+          const response = await axios.post('https://instacartbackend.onrender.com/api/agentRoute/delete',{id }, {  headers: {
             'token': token
           }},{withCredentials: true
         });
@@ -319,7 +319,7 @@ const [loading, setLoading] = useState(false)
       const  idInMind = id
       setLoading(true)
       try {
-        const response = await axios.post('http://localhost:5000/api/supervisor/delete',{id}, {  headers: {
+        const response = await axios.post('https://instacartbackend.onrender.com/api/supervisor/delete',{id}, {  headers: {
           'token': token
         }}, {withCredentials: true
       });
@@ -358,7 +358,7 @@ const [loading, setLoading] = useState(false)
     const fetchData = async () => {
       try {
 
-        const response = await axios.post('http://localhost:5000/api/supervisor/', {username, password},{ headers: {
+        const response = await axios.post('https://instacartbackend.onrender.com/api/supervisor/', {username, password},{ headers: {
           'token': token
         }},{withCredentials: true
       });
@@ -397,7 +397,7 @@ useEffect(() => {
     try {
       setLoading(false)
 
-      const response = await fetch('http://localhost:5000/api/instacart/',{ method:'GET', headers: {
+      const response = await fetch('https://instacartbackend.onrender.com/api/instacart/',{ method:'GET', headers: {
         'token': token
       }
     },  {credentials:'include'} );
@@ -423,7 +423,7 @@ useEffect(() => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/card/',{method:'GET',  headers: {
+      const response = await fetch('https://instacartbackend.onrender.com/api/card/',{method:'GET',  headers: {
         'token': token
       }
     }, {credentials:'include'} );
@@ -441,7 +441,7 @@ const [loginAccounts, setLoginAccounts] = useState([])
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/login/',{method:'GET',  headers: {
+      const response = await fetch('https://instacartbackend.onrender.com/api/login/',{method:'GET',  headers: {
         'token': token
       }
     },{credentials:'include'} );
