@@ -54,7 +54,7 @@ const Credit = (props) => {
   const [deleteId, setDeleteId] = useState('')
   const checkedButton= async ( checked)=> {
     try {
-        const response = await axios.post('https://instacartbackend.onrender.com/api/card/update', {checked, id:deleteId},{ headers: {
+        const response = await axios.post('https://localhost:5000/api/card/update', {checked, id:deleteId},{ headers: {
           'token': token
         }});
   
@@ -95,7 +95,6 @@ creditArray.map((cred)=> {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align='left'>Id</TableCell>
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Number</TableCell>
             <TableCell align="right">Cvc</TableCell>
@@ -111,7 +110,6 @@ creditArray.map((cred)=> {
               key={row.Id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="left">{row.Id}</TableCell>
               <TableCell align="right">{row.Name}</TableCell>
               <TableCell align="right"> {row.Number} </TableCell>
               <TableCell align="right">  {row.Cvc}</TableCell>

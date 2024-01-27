@@ -98,7 +98,6 @@ console.log(instasAccountArray)
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align='left'>Id</TableCell>
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Email</TableCell>
             <TableCell align="right">Phone</TableCell>
@@ -114,7 +113,6 @@ console.log(instasAccountArray)
               key={row.Id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="left">{row.Id}</TableCell>
               <TableCell align="right">{row.Name}</TableCell>
               <TableCell align="right"> {row.Email} </TableCell>
               <TableCell align="right">  {row.Phone}</TableCell>

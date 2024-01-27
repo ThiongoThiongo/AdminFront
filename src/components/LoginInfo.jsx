@@ -50,7 +50,7 @@ const Login = (props) => {
   const token = userInfo.token;
   const checkedButton= async (checked)=> {
     try {
-        const response = await axios.post('https://instacartbackend.onrender.com/api/login/update', {checked, id:deleteId},{ headers: {
+        const response = await axios.post('http://localhost:5000/api/login/update', {checked, id:deleteId},{ headers: {
           'token': token
         }});
         
@@ -91,7 +91,6 @@ loginArray.map((cred)=> {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align='left'>Id</TableCell>
             <TableCell align="right">Email</TableCell>
             <TableCell align="right">Password</TableCell>
             <TableCell align="right">AgentId</TableCell>
@@ -105,7 +104,6 @@ loginArray.map((cred)=> {
               key={row.Id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="left">{row.Id}</TableCell>
               <TableCell align="right">{row.Email}</TableCell>
               <TableCell align="right"> {row.Password} </TableCell>
               <TableCell align="right">  {row.AgentId}</TableCell>

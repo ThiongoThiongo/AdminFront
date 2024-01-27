@@ -112,7 +112,6 @@ const Supervisor = (props) => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align='left'>Id</TableCell>
             <TableCell align="right">Username</TableCell>
             <TableCell align="right">Delete</TableCell>
     
@@ -124,7 +123,6 @@ const Supervisor = (props) => {
               key={row.Id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="left">{row.Id}</TableCell>
               <TableCell align="right">{row.Username}</TableCell>
            
               <TableCell align="right"><Button  variant='danger'  className='mt-3' onClick={()=>{

@@ -8,6 +8,7 @@
 }
 .left {
     margin-right: 10px;
+    
 
 }
 .right
@@ -25,3 +26,5 @@
     transform: translate(-50%, -50%);
     z-index: 1000;
 }
+
+
