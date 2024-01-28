@@ -21,9 +21,11 @@ const Header = () => {
 
    const logoutHandler = async () => {
     try {
+      setLogoutDone(false)
 
     await logoutadmin().unwrap();
       dispatch(logout());
+      setLogoutDone(true)
     } catch(err)
     {
       console.log(err)
