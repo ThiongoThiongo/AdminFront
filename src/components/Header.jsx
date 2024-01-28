@@ -8,7 +8,10 @@ import {logout} from '../slices/authSlice'
 import { useNavigate } from 'react-router-dom';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LogoutIcon from '@mui/icons-material/Logout';
+import Loader from './Loader';
+import { useState } from 'react';
 const Header = () => {
+  const [logoutDone, setLogoutDone] = useState(true)
 
 
   const {userInfo} = useSelector((state)=> state.auth)
@@ -18,16 +21,19 @@ const Header = () => {
 
    const logoutHandler = async () => {
     try {
+      setLogoutDone(false)
+
     await logoutadmin().unwrap();
       dispatch(logout());
-      navigate('/')
+      setLogoutDone(true)
     } catch(err)
     {
       console.log(err)
     }
   }
   return (
-    <header>
+    <>  {logoutDone ? 
+     <header>
           <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect >
            <Container className='px-5 mx-2 py-3'>
             <LinkContainer to='/'>
@@ -92,6 +98,9 @@ const Header = () => {
            </Container>
           </Navbar>
     </header>
+: <Loader/>
+} 
+</>
   )
 }
 

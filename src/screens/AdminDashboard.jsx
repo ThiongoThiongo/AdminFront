@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
-import * as React from 'react';
+import { Button } from 'react-bootstrap';
+
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import PaymentsIcon from '@mui/icons-material/Payments';
@@ -19,9 +20,22 @@ import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import Supervisor from '../components/Supervisor';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import ListIcon from '@mui/icons-material/List';
+import CloseIcon from '@mui/icons-material/Close';
+import {
+  useWindowSize,
+
+} from '@react-hook/window-size'
+
 
 const AdminDashboard = () => {
+
+    const [width] = useWindowSize()
+
+     const [showMenu, setShowMenu] = useState(true)
+
+
   const { userInfo } = useSelector((state) => state.auth);
   const token = userInfo.token;
   const navigate = useNavigate();
@@ -480,6 +494,24 @@ const calledCheckedLogin= (id, state) => {
   console.log(instas)
   setLoginAccounts(instas)
 }
+
+const toggleShowButton = ()=> {
+  setShowMenu(!showMenu)
+}
+const getClassName = ()=> {
+
+  if(width > 750)
+  {
+    return 'left'
+  }
+  else if(width < 750 && showMenu)
+  {
+    return 'hide'
+  }
+  else{
+    return 'side'
+  }
+}
   return (
 
 
@@ -488,30 +520,55 @@ const calledCheckedLogin= (id, state) => {
         {agents.length ===0 && !loaderEnd && <Loader/>}
 
         </div>
-        <div className="left">
+      
+
+      {   width <  750 ? <>     {showMenu ? 
+           
+           <div className="icons"><Button
+              type='button'
+              variant='primary'
+              className='p-2'
+              onClick={()=>setShowMenu(!showMenu)}
+            >
+              <ListIcon/>
+            </Button>
+            </div>
+            :   <div className="iconsDelete"> <Button
+            type='button'
+            variant='danger'
+            className='p-2'
+            onClick={()=>setShowMenu(!showMenu)}
+          >
+<CloseIcon/>           </Button>
+</div>
+}</>:<></>}
+       
+        
+        <div  className={getClassName()} >
+         
         <ToggleButtonGroup
       orientation="vertical"
       value={view}
       exclusive
       onChange={handleChange}
     >
-      <ToggleButton value="agents" aria-label="agents" className='my-2'>
+      <ToggleButton value="agents" onClick={toggleShowButton} aria-label="agents" className='my-2'>
         <SupervisedUserCircleIcon/> <span className='mx-2'>Agents</span> 
       </ToggleButton>
-      <ToggleButton value="officer" aria-label="officer">
+      <ToggleButton onClick={toggleShowButton}  value="officer" aria-label="officer">
         <SupervisorAccountIcon/>   <span className='mx-2'>Officers</span> 
       </ToggleButton>
 
-      <ToggleButton value="accounts" aria-label="accounts">
+      <ToggleButton onClick={toggleShowButton}  value="accounts" aria-label="accounts">
       <ContactPhoneIcon/><span className='mx-2'>Instacart accounts</span> 
             </ToggleButton>
-      <ToggleButton value="login" aria-label="login">
+      <ToggleButton onClick={toggleShowButton}  value="login" aria-label="login">
         <VpnKeyIcon/>   <span className='mx-2'>Login Credentials</span> 
       </ToggleButton>
-      <ToggleButton value="credit" aria-label="credit">
+      <ToggleButton onClick={toggleShowButton}  value="credit" aria-label="credit">
         <PaymentsIcon/>   <span className='mx-2'>Credit card infos</span> 
       </ToggleButton>
-      <ToggleButton value="profile" aria-label="profile">
+      <ToggleButton onClick={toggleShowButton}  value="profile" aria-label="profile">
         <PaymentsIcon/>   <span className='mx-2'>Admin Profile</span> 
       </ToggleButton>
 
